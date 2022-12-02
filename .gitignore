@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 package-lock.json
+.eslintrc.json
+*prettier*
+.husky
+.git

@@ -7,7 +7,6 @@ import positionStore from '../../store/positionStore';
 function MainPage() {
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {

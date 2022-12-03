@@ -9,9 +9,9 @@ class PositionStore {
     }
 
     setPosition(latitude: number, longitude: number) {
-        this.latitude = latitude
-        this.longitude = longitude
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }
 
-export default new PositionStore;
+export default new PositionStore();

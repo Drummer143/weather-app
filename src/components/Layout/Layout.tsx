@@ -9,18 +9,21 @@ function MainPage() {
     const location = useLocation();
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-            latitude = Math.round(latitude * 10000) / 10000;
-            longitude = Math.round(longitude * 10000) / 10000
+        navigator.geolocation.getCurrentPosition(
+            ({ coords: { latitude, longitude } }) => {
+                latitude = Math.round(latitude * 10000) / 10000;
+                longitude = Math.round(longitude * 10000) / 10000;
 
-            positionStore.setPosition(latitude, longitude);
+                positionStore.setPosition(latitude, longitude);
 
-            if (location.pathname === '/') {
-                navigate('current'); //`/lan=${latitude}&lon=${longitude}`);
+                if (location.pathname === '/') {
+                    navigate('current'); //`/lan=${latitude}&lon=${longitude}`);
+                }
+            },
+            error => {
+                console.error(error);
             }
-        }, error => {
-            console.error(error);
-        })
+        );
     }, []);
 
     return (
@@ -28,7 +31,7 @@ function MainPage() {
             <Navbar />
             <Outlet />
         </div>
-    )
+    );
 }
 
 export default MainPage;

@@ -1,18 +1,18 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
-import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
-import { getCurrentWeather } from "./apis/OpenWeather/requests";
-import positionStore from "./store/positionStore";
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import { getCurrentWeather } from './apis/OpenWeather/requests';
+import positionStore from './store/positionStore';
 import { AxiosPromise } from 'axios';
 
 const router = createBrowserRouter([
     {
-        path: "/*",
+        path: '/*',
         element: <Layout />,
         children: [
             {
-                path: "current", //lan=:lan&lon=:lon",
+                path: 'current', //lan=:lan&lon=:lon",
                 element: <CurrentWeather />,
                 loader: (/* { params: { lat, lon } } */) => {
                     const latitude = /* lat ? Number(lat) : */ positionStore.latitude,
@@ -61,15 +61,15 @@ const router = createBrowserRouter([
 "id": 6295630,
 "name": "Globe",
 "cod": 200
-}`)
-                },
+}`);
+                }
             },
             {
-                path: "test",
+                path: 'test',
                 element: <CurrentWeather />
             }
         ]
     }
-])
+]);
 
 export default router;

@@ -1,0 +1,1 @@
+export const aGeolocationUrl = 'https://ipgeolocation.abstractapi.com/v1/?api_key=b7dbc9e85f3646faa1fef471b64b7df9';

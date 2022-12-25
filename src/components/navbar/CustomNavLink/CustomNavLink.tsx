@@ -15,6 +15,7 @@ function CustomNavLink({ to, children, cRef }: Props) {
             ref={cRef}
             className={({ isActive, isPending }) =>
                 'relative z-[1] px-2 py-1 rounded-lg transition-colors underline decoration-transparent'
+                    .concat(' first-letter:uppercase')
                     .concat(' ', isActive ? 'text-black' : 'hover:decoration-white')
                     .concat(isPending ? ' pointer-events-none bg-gray-500' : '')
             }

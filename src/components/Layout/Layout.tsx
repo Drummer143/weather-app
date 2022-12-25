@@ -1,10 +1,10 @@
-import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 
 import Navbar from '../navbar/Navbar/Navbar';
 import positionStore from '../../store/positionStore';
 
-function MainPage() {
+function Layout() {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -17,21 +17,22 @@ function MainPage() {
                 positionStore.setPosition(latitude, longitude);
 
                 if (location.pathname === '/') {
-                    navigate('current'); //`/lan=${latitude}&lon=${longitude}`);
+                    navigate('current');
                 }
             },
             error => {
                 console.error(error);
+                navigate('search');
             }
         );
     }, []);
 
     return (
-        <div className={`w-full h-full`}>
+        <div className={`w-full h-full grid grid-rows-[min-content,_1fr]`}>
             <Navbar />
             <Outlet />
         </div>
     );
 }
 
-export default MainPage;
+export default Layout;

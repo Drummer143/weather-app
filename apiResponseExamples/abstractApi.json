@@ -1,0 +1,45 @@
+{
+    "ip_address": "78.109.79.87",
+    "city": "Yerevan",
+    "city_geoname_id": 616052,
+    "region": "Yerevan",
+    "region_iso_code": "ER",
+    "region_geoname_id": 616051,
+    "postal_code": null,
+    "country": "Armenia",
+    "country_code": "AM",
+    "country_geoname_id": 174982,
+    "country_is_eu": false,
+    "continent": "Asia",
+    "continent_code": "AS",
+    "continent_geoname_id": 6255147,
+    "longitude": 44.5099,
+    "latitude": 40.1817,
+    "security": {
+        "is_vpn": false
+    },
+    "timezone": {
+        "name": "Asia/Yerevan",
+        "abbreviation": "+04",
+        "gmt_offset": 4,
+        "current_time": "23:05:21",
+        "is_dst": false
+    },
+    "flag": {
+        "emoji": "🇦🇲",
+        "unicode": "U+1F1E6 U+1F1F2",
+        "png": "https://static.abstractapi.com/country-flags/AM_flag.png",
+        "svg": "https://static.abstractapi.com/country-flags/AM_flag.svg"
+    },
+    "currency": {
+        "currency_name": "Dram",
+        "currency_code": "AMD"
+    },
+    "connection": {
+        "autonomous_system_number": 49800,
+        "autonomous_system_organization": "GNC-Alfa CJSC",
+        "connection_type": "Corporate",
+        "isp_name": "GNC-Alfa CJSC",
+        "organization_name": "GNC"
+    }
+}

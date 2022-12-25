@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import CustomNavLink from '../CustomNavLink/CustomNavLink';
+import router from '../../../router'
 
 import Logo from '../Logo/Logo';
 
@@ -28,18 +29,15 @@ function Navbar() {
                     className={'absolute bg-white h-8 rounded-lg aspect-square transition-[left,_width,_height] duration-300 pointer-events-none'}
                 ></div>
 
-                <CustomNavLink
-                    to='/current'
-                    cRef={location.pathname === '/current' ? activeLinkRef : undefined}
-                >
-                    Current
-                </CustomNavLink>
-                <CustomNavLink
-                    to='/test'
-                    cRef={location.pathname === '/test' ? activeLinkRef : undefined}
-                >
-                    Test
-                </CustomNavLink>
+                {router.routes[0].children?.map(child => (
+                    <CustomNavLink
+                        cRef={location.pathname === `/${child.path}` ? activeLinkRef : undefined}
+                        key={child.path}
+                        to={`/${child.path}`}
+                    >
+                        {child.path}
+                    </CustomNavLink>
+                ))}
             </div>
         </div>
     );

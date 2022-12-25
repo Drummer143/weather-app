@@ -1,7 +1,7 @@
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../navbar/Navbar/Navbar';
 import positionStore from '../../store/positionStore';
 
 function MainPage() {

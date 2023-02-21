@@ -16,20 +16,22 @@ const router = createBrowserRouter([
                 path: 'current', //lan=:lan&lon=:lon",
                 element: <CurrentWeather />,
                 loader: async (/* { params: { lat, lon } } */) => {
-                    let latitude = /* lat ? Number(lat) : */ positionStore.latitude,
-                        longitude = /* lon ? Number(lon) : */ positionStore.longitude;
+                    // let latitude = /* lat ? Number(lat) : */ positionStore.latitude,
+                    //     longitude = /* lon ? Number(lon) : */ positionStore.longitude;
 
-                    if (!latitude || !longitude) {
-                        aGeolocation().then(({ data }) => {
-                            console.log(data);
+                    // console.log(latitude, longitude)
 
-                            latitude = data.latitude;
-                            longitude = data.longitude;
-                        })
-                    }
+                    // if (!latitude || !longitude) {
+                    //     await aGeolocation().then(({ data }) => {
+                    //         console.log(data);
+
+                    //         latitude = data.latitude;
+                    //         longitude = data.longitude;
+                    //     })
+                    // }
 
                     // return getCurrentWeather(latitude, longitude).then(res => res.data).catch(error => error);
-                    return JSON.parse(`{"coord": {"lon": 0,"lat": 0},"weather": [{"id": 804,"main": "Clouds","description": "overcast clouds","icon": "04d"}],"base": "stations","main": {"temp": 298.96,"feels_like": 299.69,"temp_min": 298.96,"temp_max": 298.96,"pressure": 1007,"humidity": 80,"sea_level": 1007,"grnd_level": 1007},"visibility": 10000,"wind": {"speed": 4.27,"deg": 206,"gust": 4.52},"clouds": {"all": 100},"dt": 1670084519,"sys": {"sunrise": 1670046381,"sunset": 1670090011},"timezone": 0,"id": 6295630,"name": "Globe","cod": 200}`);
+                    return JSON.parse(`{    "coord": {        "lon": 44.5096,        "lat": 40.1458    },    "weather": [        {            "id": 701,            "main": "Mist",            "description": "mist",            "icon": "50n"        }    ],    "base": "stations",    "main": {        "temp": 272.48,        "feels_like": 272.48,        "temp_min": 272.48,        "temp_max": 272.48,        "pressure": 1018,        "humidity": 74    },    "visibility": 3500,    "wind": {        "speed": 0,        "deg": 0    },    "clouds": {        "all": 3    },    "dt": 1672000785,    "sys": {        "type": 1,        "id": 8851,        "country": "AM",        "sunrise": 1672028564,        "sunset": 1672062111    },    "timezone": 14400,    "id": 616353,    "name": "Nor Aresh",    "cod": 200}`);
                 }
             }
         ]

@@ -1,11 +1,12 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import CustomNavLink from '../CustomNavLink/CustomNavLink';
-import router from '../../../router'
+import React, { useEffect, useRef } from 'react';
 
-import Logo from '../Logo/Logo';
+import router from '../../router'
+import CustomNavLink from './CustomNavLink';
 
-function Navbar() {
+import Logo from './Logo';
+
+const Navbar: React.FC = () => {
     const location = useLocation();
     const activeLinkRef = useRef<HTMLAnchorElement>(null);
     const activeLinkBackgroundRef = useRef<HTMLDivElement>(null);

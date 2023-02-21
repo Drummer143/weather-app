@@ -1,7 +1,9 @@
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { owWeatherImage } from '../../apis/OpenWeather/urlBuilders';
 
-function CurrentWeather() {
+import { owWeatherImage } from '../apis/OpenWeather/urlBuilders';
+
+const CurrentWeather: React.FC = () => {
     const data = useLoaderData() as OWCurrentWeatherResponse;
 
     console.log(data);

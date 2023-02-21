@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-type Props = {
+type CustomNavLinkProps = {
     to: string
 
     children?: React.ReactNode
     cRef?: React.RefObject<HTMLAnchorElement>
 }
 
-function CustomNavLink({ to, children, cRef }: Props) {
+const CustomNavLink: React.FC<CustomNavLinkProps> = ({ to, children, cRef }) => {
     return (
         <NavLink
             to={to}

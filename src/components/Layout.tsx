@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 
-import Navbar from './Navbar/Navbar';
+import Navbar from './Navbar';
 import positionStore from '../store/positionStore';
 
 const Layout: React.FC = () => {
@@ -22,7 +22,7 @@ const Layout: React.FC = () => {
             },
             error => {
                 console.error(error);
-                navigate('search');
+                navigate('/');
             }
         );
     }, []);

@@ -7,14 +7,14 @@ const Logo: React.FC = () => {
     return (
         <NavLink
             to="/"
-            className={'group relative justify-self-start h-full grid place-items-center aspect-square w-fit'}
+            className={'max-sm:group relative justify-self-start h-full grid place-items-center aspect-square w-fit'}
         >
             {({ isActive, isPending }) => (
                 <>
                     <SunSVG
                         className={'absolute h-2/3 transition-[fill] fill-yellow-300'
-                            .concat(isActive ? ' animate-spin-5s' : '')
-                            .concat(isPending ? ' animate-spin-3s' : '')
+                            .concat(isActive ? ' sm:animate-spin-5s' : '')
+                            .concat(isPending ? ' sm:animate-spin-3s' : '')
                         }
                     />
 

@@ -5,20 +5,20 @@ type CustomNavLinkProps = {
     to: string
 
     children?: React.ReactNode
-    cRef?: React.RefObject<HTMLAnchorElement>
+    onClick?: React.MouseEventHandler<HTMLAnchorElement>
 }
 
-const CustomNavLink: React.FC<CustomNavLinkProps> = ({ to, children, cRef }) => {
+const CustomNavLink: React.FC<CustomNavLinkProps> = ({ to, children, onClick }) => {
     return (
         <NavLink
             to={to}
-            ref={cRef}
+            onClick={onClick}
             className={({ isActive, isPending }) =>
-                'relative z-[1] px-2 py-1 rounded-lg transition-colors underline decoration-transparent'
+                'relative z-[1] px-2 py-1 rounded-lg transition-[color,_background-color]'
+                    .concat(' underline decoration-transparent whitespace-nowrap')
                     .concat(' first-letter:uppercase')
-                    .concat(' ', isActive ? 'text-black' : 'hover:decoration-white')
-                    .concat(isPending ? ' pointer-events-none bg-gray-500' : '')
-            }
+                    .concat(' ', isActive ? 'text-black bg-white' : 'hover:decoration-white')
+                    .concat(isPending ? ' pointer-events-none bg-gray-500' : '')}
         >
             {children}
         </NavLink>

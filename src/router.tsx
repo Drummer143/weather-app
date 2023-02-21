@@ -1,15 +1,16 @@
-import { createBrowserRouter } from 'react-router-dom';
+// import { AxiosPromise } from 'axios';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import { AxiosPromise } from 'axios';
-import { getCurrentWeather } from './apis/OpenWeather/requests';
 import Layout from './components/Layout';
-import positionStore from './store/positionStore';
+// import positionStore from './store/positionStore';
 import CurrentWeather from './components/CurrentWeather';
-import { aGeolocation } from './apis/Abstract/requests';
+// import { aGeolocation } from './apis/Abstract/requests';
+// import { getCurrentWeather } from './apis/OpenWeather/requests';
+import { currentWeatherExampleResponse } from './utils/constants';
 
 const router = createBrowserRouter([
     {
-        path: '/*',
+        path: '/',
         element: <Layout />,
         children: [
             {
@@ -31,53 +32,22 @@ const router = createBrowserRouter([
                     // }
 
                     // return getCurrentWeather(latitude, longitude).then(res => res.data).catch(error => error);
-                    return {
-                        coord:
-                        {
-                            lon: 44.5096,
-                            lat: 40.1458
-                        },
-                        weather: [
-                            {
-                                id: 701,
-                                main: "Mist",
-                                description: "mist",
-                                icon: "50n"
-                            }
-                        ],
-                        base: "stations",
-                        main: {
-                            temp: 272.48,
-                            feels_like: 272.48,
-                            temp_min: 272.48,
-                            temp_max: 272.48,
-                            pressure: 1018,
-                            humidity: 74
-                        },
-                        visibility: 3500,
-                        wind: {
-                            speed: 0,
-                            deg: 0
-                        },
-                        clouds: {
-                            all: 3
-                        },
-                        dt: 1672000785,
-                        sys: {
-                            type: 1,
-                            id: 8851,
-                            country: "AM",
-                            sunrise: 1672028564,
-                            sunset: 1672062111
-                        },
-                        timezone: 14400,
-                        id: 616353,
-                        name: "Nor Aresh",
-                        cod: 200
-                    };
+                    return currentWeatherExampleResponse;
                 }
+            },
+            {
+                path: '3-days',
+                element: <div>3 day</div>
+            },
+            {
+                path: '14-days',
+                element: <div>14 day</div>
             }
         ]
+    },
+    {
+        path: '/*',
+        element: <Navigate to='/' replace />
     }
 ]);
 

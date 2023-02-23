@@ -1,5 +1,5 @@
 type OWCurrentWeatherResponse = {
-    coord?: {
+    coord: {
         lon: number; // City geo location, longitude
         lat: number; //City geo location, latitude
     };
@@ -21,7 +21,7 @@ type OWCurrentWeatherResponse = {
         grnd_level: number; // Atmospheric pressure on the ground level, hPa
     };
     visibility?: number; // Visibility, meter. The maximum value of the visibility is 10km
-    wind?: {
+    wind: {
         speed: number; // Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
         deg: number; // Wind direction, degrees (meteorological)
         gust: number; // Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
@@ -35,11 +35,11 @@ type OWCurrentWeatherResponse = {
         '1h'?: number; // Snow volume for the last 1 hour, mm
         '3h'?: number; // Snow volume for the last 3 hour, mm
     };
-    clouds?: {
+    clouds: {
         all: number; // Cloudiness, %
     };
     dt?: number; // Time of data calculation, unix, UTC
-    sys?: {
+    sys: {
         type: number; // Internal parameter
         id: number; // Internal parameter
         message: any; // Internal parameter
@@ -49,6 +49,6 @@ type OWCurrentWeatherResponse = {
     };
     timezone?: number; // Shift in seconds from UTC
     id?: number; // City ID
-    name?: string; // City name
+    name: string; // City name
     cod?: number; // Internal parameter
 }; //

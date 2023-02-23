@@ -1,11 +1,9 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import Layout from './components/Layout';
+import weatherStore from './store/weatherStore';
 import positionStore from './store/geolocationStore';
-import CurrentWeather from './components/CurrentWeather';
-import { aGeolocation } from './apis/Abstract/requests';
-import { getCurrentWeather } from './apis/OpenWeather/requests';
-import { currentWeatherExampleResponse } from './utils/constants';
+import BasicWeatherInfo from './components/BasicWeatherInfo';
 
 const router = createBrowserRouter([
     {
@@ -15,25 +13,16 @@ const router = createBrowserRouter([
             {
                 path: 'current', //lan=:lan&lon=:lon",
                 id: 'current',
-                element: <CurrentWeather />,
+                element: <BasicWeatherInfo />,
                 loader: async (): Promise<OWCurrentWeatherResponse> => {
-                    let latitude = positionStore.latitude,
-                        longitude = positionStore.longitude;
+                    await positionStore.requestPosition()
 
-                    try {
-                        const geolocation = (await aGeolocation()).data;
-                        console.log(geolocation);
-                        positionStore.setCity(geolocation.city);
-                        positionStore.setCountry(geolocation.country);
+                    const currentWeather = await weatherStore.requestCurrentWeather(positionStore.latitude, positionStore.longitude);
 
-                        latitude = geolocation.latitude;
-                        longitude = geolocation.longitude;
-                    } catch (error) {
-                        console.error(error);
-                    }
+                    positionStore.setCity(currentWeather.name);
+                    positionStore.setCountry(currentWeather.sys.country);
 
-                    return (await getCurrentWeather(latitude, longitude)).data;
-                    return currentWeatherExampleResponse;
+                    return currentWeather;
                 },
                 errorElement: <div>Error</div>
             },

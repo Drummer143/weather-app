@@ -11,8 +11,7 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             {
-                path: 'current', //lan=:lan&lon=:lon",
-                id: 'current',
+                path: '/current', //lan=:lan&lon=:lon",
                 element: <BasicWeatherInfo />,
                 loader: async (): Promise<OWCurrentWeatherResponse> => {
                     await positionStore.requestPosition()

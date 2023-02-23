@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 
 import Navbar from './Navbar';
-import positionStore from '../store/positionStore';
+import positionStore from '../store/geolocationStore';
 
 const Layout: React.FC = () => {
     const navigate = useNavigate();
@@ -28,9 +28,12 @@ const Layout: React.FC = () => {
     }, []);
 
     return (
-        <div className={`w-full h-full grid grid-rows-[min-content,_1fr]`}>
+        <div className={`w-full h-full`}>
             <Navbar />
-            <Outlet />
+
+            <div className='max-sm: max-lg: lg:px-[16%]'>
+                <Outlet />
+            </div>
         </div>
     );
 }

@@ -45,6 +45,6 @@ export const currentWeatherExampleResponse: OWCurrentWeatherResponse = {
 
 export const navLinkInfo = [
     { to: '/current', text: 'Current' },
-    { to: '/14-days', text: '3 days forecast' },
-    { to: '/3-days', text: '14 days forecast' },
+    // { to: '/14-days', text: '3 days forecast' },
+    // { to: '/3-days', text: '14 days forecast' },
 ]

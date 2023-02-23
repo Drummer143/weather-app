@@ -7,7 +7,7 @@ const Logo: React.FC = () => {
     return (
         <NavLink
             to="/"
-            className={'max-sm:group relative justify-self-start h-full grid place-items-center aspect-square w-fit'}
+            className={'group relative justify-self-start h-full grid place-items-center aspect-square w-fit'}
         >
             {({ isActive, isPending }) => (
                 <>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { owWeatherImage } from '../../../apis/OpenWeather/urlBuilders';
 
 import weatherStore from '../../../store/weatherStore';
 import AdditionalInfoItem from './AdditionalInfoItem';
+import { weatherImageLink } from '../../../apis/OpenWeather';
 import { speedFormatter, tempFormatter, timeFormatter } from '../../../utils/constants';
 
 const CurrentWeather: React.FC = () => {
-    const [imageSrc] = useState(owWeatherImage(weatherStore.currentWeather?.weather[0].icon, '4'));
+    const [imageSrc] = useState(weatherImageLink(weatherStore.currentWeather?.weather[0].icon, '4'));
 
     if (!weatherStore.currentWeather) {
         return (

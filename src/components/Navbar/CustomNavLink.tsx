@@ -14,7 +14,7 @@ const CustomNavLink: React.FC<CustomNavLinkProps> = ({ to, children, onClick }) 
             to={to}
             onClick={onClick}
             className={({ isActive, isPending }) =>
-                'relative z-[1] px-2 py-1 rounded-lg transition-[color,_background-color]'
+                'px-2 py-1 rounded-lg transition-[color,_background-color]'
                     .concat(' underline decoration-transparent whitespace-nowrap')
                     .concat(' first-letter:uppercase')
                     .concat(' ', isActive ? 'text-black bg-white' : 'hover:decoration-white')

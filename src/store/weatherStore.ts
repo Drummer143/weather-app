@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-import { getCurrentWeather } from '../apis/OpenWeather/requests';
+import { getCurrentWeather } from '../apis/OpenWeather';
 
 class WeatherStore {
     currentWeather: OWCurrentWeatherResponse | undefined;

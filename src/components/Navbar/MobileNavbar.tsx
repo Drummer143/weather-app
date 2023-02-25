@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import CustomNavLink from './CustomNavLink';
 import GoogleMaterialIcon from '../GoogleMaterialIcon/GoogleMaterialIcon';
 import { navLinkInfo } from '../../utils/constants';
+import SearchInput from './DesktopSearchInput/DesktopSearchInput';
 
 const MobileNavbar: React.FC = () => {
     const [isOpened, setIsOpened] = useState(false);
@@ -35,6 +36,8 @@ const MobileNavbar: React.FC = () => {
                     .concat(' flex justify-center items-center flex-col text-lg overflow-hidden gap-2')
                     .concat(' ', isOpened ? 'w-full' : 'w-0')}
             >
+                <SearchInput />
+
                 {navLinkInfo.map(({ text, to }) => (
                     <CustomNavLink
                         onClick={hideMenu}

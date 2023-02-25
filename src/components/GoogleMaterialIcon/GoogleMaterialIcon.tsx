@@ -10,6 +10,8 @@ type GoogleMaterialIconProps = {
     GRAD?: number;
     opsz?: number;
     className?: string;
+
+    onClick?: React.MouseEventHandler<HTMLSpanElement>
 };
 
 const GoogleMaterialIcon: React.FC<GoogleMaterialIconProps> = ({
@@ -20,10 +22,12 @@ const GoogleMaterialIcon: React.FC<GoogleMaterialIconProps> = ({
     FILL = 0,
     GRAD = 0,
     opsz = 48,
-    wght = 400
+    wght = 400,
+    onClick
 }) => {
     return (
         <span
+            onClick={onClick}
             className={'aspect-square'
                 .concat(' material-symbols-outlined')
                 .concat(className ? ` ${className}` : '')}

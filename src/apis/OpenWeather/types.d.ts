@@ -52,3 +52,13 @@ type OWCurrentWeatherResponse = {
     name: string; // City name
     cod?: number; // Internal parameter
 }; //
+
+type OWCoordinatesByLocationNameResponse = {
+    name: string,
+    local_names?: {
+        [key: string]: string
+    },
+    lat: number,
+    lon: number,
+    country: string
+}

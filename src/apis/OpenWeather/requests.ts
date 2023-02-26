@@ -1,12 +1,12 @@
-import axios, { AxiosPromise } from 'axios';
+import axios from 'axios';
 import { coordinatesByLocationNameLink, currentWeatherLink } from './urlBuilders';
 
-export const getCurrentWeather = (
+export const getCurrentWeather = async (
     latitude: number,
     longitude: number
-): AxiosPromise<OWCurrentWeatherResponse> => axios.get(currentWeatherLink(latitude, longitude));
+): Promise<OWCurrentWeatherResponse> => (await axios.get(currentWeatherLink(latitude, longitude))).data;
 
-export const getCoordinatesByLocationName = (
+export const getCitiesWithGivenName = async (
     cityName: string,
     limit?: number
-): AxiosPromise<OWCoordinatesByLocationNameResponse> => axios.get(coordinatesByLocationNameLink(cityName, limit))
+): Promise<OWLocationWithGivenName[]> => (await axios.get(coordinatesByLocationNameLink(cityName, limit))).data

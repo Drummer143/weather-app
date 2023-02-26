@@ -10,3 +10,5 @@ export const weatherImageLink = (imageName?: string, zoom: '2' | '4' | '' = '') 
 
 export const coordinatesByLocationNameLink = (cityName: string, limit = 5/* , stateCode?: string | number, countrCode?: string | number */) =>
     `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&${appIDQuery}`
+
+export const countryFlagLink = (countryCode: string) => `http://openweathermap.org/images/flags/${countryCode.toLowerCase()}.png`

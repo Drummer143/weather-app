@@ -1,37 +1,37 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import GoogleMaterialIcon from '../../GoogleMaterialIcon/GoogleMaterialIcon';
+import SearchInput from './SearchInput';
+import CitiesDropdown from './CitiesDropdown';
 
 const DesktopSearchInput: React.FC = () => {
-    const [input, setInput] = useState('');
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
-    const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => setInput(e.target.value);
+    const hideDropdown = (e: MouseEvent) => {
+        if (wrapperRef.current && !e.composedPath().includes(wrapperRef.current)) {
+            document.removeEventListener('click', hideDropdown);
+            setIsDropdownVisible(false);
+        }
+    }
 
-    const handleClick: React.MouseEventHandler<HTMLDivElement> = () => inputRef.current?.focus();
+    useEffect(() => {
+        console.log(isDropdownVisible);
+        if (isDropdownVisible) {
+            document.addEventListener('click', hideDropdown);
+        } else {
+            document.removeEventListener('click', hideDropdown);
+        }
+    }, [isDropdownVisible]);
 
     return (
         <div
-            onClick={handleClick}
-            className='h-full relative min-w-[1.5rem] w-full flex items-center cursor-text'
+            ref={wrapperRef}
+            className='h-full relative min-w-[1.5rem] w-80 flex items-center'
         >
-            <input
-                ref={inputRef}
-                type='text'
-                placeholder='Weather in your city'
-                value={input}
-                onChange={handleInputChange}
-                className={'text-black h-7 rounded w-full pr-1.5 pl-7 outline outline-1 outline-transparent'
-                    .concat(' active:outline-black')}
-            />
+            <SearchInput onFocus={() => setIsDropdownVisible(true)} />
 
-            <GoogleMaterialIcon
-                iconName='search'
-                size={1.5}
-                className={'absolute top-1/2 left-[2px] -translate-y-1/2'}
-                color='black'
-            />
+            <CitiesDropdown onItemClick={() => setIsDropdownVisible(false)} visible={isDropdownVisible} />
         </div>
     )
 }

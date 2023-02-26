@@ -1,22 +1,33 @@
 import { makeAutoObservable } from 'mobx';
 
-import { getCurrentWeather } from '../apis/OpenWeather';
+import { getCitiesWithGivenName as OWGetCitiesWithGivenName, getCurrentWeather } from '../apis/OpenWeather';
 
 class WeatherStore {
-    currentWeather: OWCurrentWeatherResponse | undefined;
+    currentWeather?: OWCurrentWeatherResponse | undefined;
+    suggestedCities: OWLocationWithGivenName[] = [];
 
     constructor() {
         makeAutoObservable(this);
     }
 
     async requestCurrentWeather(latitude: number, longitude: number) {
-        const currentWeather = (await getCurrentWeather(latitude, longitude)).data;
-
-        console.log(currentWeather);
+        const currentWeather = await getCurrentWeather(latitude, longitude);
 
         this.currentWeather = currentWeather;
 
         return currentWeather;
+    }
+
+    async getCitiesWithGivenName(cityName: string) {
+        const cities = await OWGetCitiesWithGivenName(cityName);
+
+        this.suggestedCities = cities;
+
+        return cities;
+    }
+
+    clearSuggestedCities() {
+        this.suggestedCities = [];
     }
 }
 

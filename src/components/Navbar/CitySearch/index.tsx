@@ -33,7 +33,6 @@ const CitySearch: React.FC = () => {
     }
 
     useEffect(() => {
-        console.log(isDropdownVisible);
         if (isDropdownVisible) {
             document.addEventListener('click', hideDropdown);
         } else {

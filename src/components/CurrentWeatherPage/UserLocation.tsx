@@ -6,10 +6,6 @@ import weatherStore from '../../store/weatherStore';
 const UserLocation: React.FC = () => {
     const [currentTime] = useState(dateFormatter.format(new Date()));
 
-    useEffect(() => {
-        console.log(weatherStore.city)
-    })
-
     return (
         <div className='w-full px-3'>
             <h1 className='text-2xl pt-4'>{weatherStore.city}, {weatherStore.country}</h1>
@@ -17,4 +13,5 @@ const UserLocation: React.FC = () => {
         </div>
     )
 }
+
 export default UserLocation;

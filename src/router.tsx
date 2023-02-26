@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import weatherStore from './store/weatherStore';
-import BasicWeatherInfo from './components/BasicWeatherInfo';
+import CurrentWeatherPage from './components/CurrentWeatherPage';
 
 const router = createBrowserRouter([
     {
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/current', //lan=:lan&lon=:lon",
-                element: <BasicWeatherInfo />,
+                element: <CurrentWeatherPage />,
                 loader: async (): Promise<OWCurrentWeatherResponse> => {
                     if (!weatherStore.latitude || !weatherStore.longitude) {
                         await weatherStore.requestPosition()

@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import weatherStore from '../../../store/weatherStore';
 
 import GoogleMaterialIcon from '../../GoogleMaterialIcon/GoogleMaterialIcon';

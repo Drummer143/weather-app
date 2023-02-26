@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import SearchInput from './SearchInput';
 import CitiesDropdown from './CitiesDropdown';
-import geolocationStore from '../../../store/geolocationStore';
+import weatherStore from '../../../store/weatherStore';
 
-const DesktopSearchInput: React.FC = () => {
+const CitySearch: React.FC = () => {
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const DesktopSearchInput: React.FC = () => {
         const lat = Number(e.currentTarget.dataset.lat);
 
         if (!isNaN(lon) && !isNaN(lat)) {
-            geolocationStore.setPosition(lat, lon);
+            weatherStore.setPosition(lat, lon);
 
             navigate('/current')
         }
@@ -52,4 +52,4 @@ const DesktopSearchInput: React.FC = () => {
         </div>
     )
 }
-export default DesktopSearchInput;
+export default CitySearch;

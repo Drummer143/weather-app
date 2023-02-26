@@ -5,7 +5,11 @@ import SearchInput from './SearchInput';
 import CitiesDropdown from './CitiesDropdown';
 import weatherStore from '../../../store/weatherStore';
 
-const CitySearch: React.FC = () => {
+type CitySearchProps = {
+    onDropdownItemClick?: React.MouseEventHandler<HTMLDivElement>;
+}
+
+const CitySearch: React.FC<CitySearchProps> = ({ onDropdownItemClick }) => {
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
     const navigate = useNavigate();
@@ -30,6 +34,10 @@ const CitySearch: React.FC = () => {
         }
 
         setIsDropdownVisible(false);
+
+        if (onDropdownItemClick) {
+            onDropdownItemClick(e);
+        }
     }
 
     useEffect(() => {
@@ -51,4 +59,5 @@ const CitySearch: React.FC = () => {
         </div>
     )
 }
+
 export default CitySearch;

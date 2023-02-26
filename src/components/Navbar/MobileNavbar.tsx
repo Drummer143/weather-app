@@ -37,7 +37,7 @@ const MobileNavbar: React.FC = () => {
                     .concat(' ', isOpened ? 'w-full' : 'w-0')}
             >
                 <div className='mb-2'>
-                    <CitySearch />
+                    <CitySearch onDropdownItemClick={() => setIsOpened(false)} />
                 </div>
 
                 {navLinkInfo.map(({ text, to }) => (
@@ -53,4 +53,5 @@ const MobileNavbar: React.FC = () => {
         </div>
     )
 }
+
 export default MobileNavbar;

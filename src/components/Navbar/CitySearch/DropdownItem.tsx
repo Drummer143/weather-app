@@ -21,11 +21,11 @@ const DropdownItem: React.FC<DropdownItemProps> = ({ city, onClick }) => {
                 .concat(' first:border-t-0 last:border-b-0')
                 .concat(' hover:bg-slate-200')}
         >
-            <h4 className='text-base pointer-events-none'>
+            <h4 className='text-base'>
                 {city.name}, {city.country}
                 <img className='inline-block ml-1.5' height={14} src={countryFlagLink(city.country)} />
             </h4>
-            <p className='text-sm pointer-events-none'>
+            <p className='text-sm'>
                 Coordinates:{' '}
                 <span className='text-blue-700'>[{roundTo3Floats(city.lat)}, {roundTo3Floats(city.lon)}]</span>
             </p>

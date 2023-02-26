@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import CitySearch from './CitySearch';
 import CustomNavLink from './CustomNavLink';
 import GoogleMaterialIcon from '../GoogleMaterialIcon/GoogleMaterialIcon';
 import { navLinkInfo } from '../../utils/constants';
-import SearchInput from './DesktopSearchInput/DesktopSearchInput';
 
 const MobileNavbar: React.FC = () => {
     const [isOpened, setIsOpened] = useState(false);
@@ -32,11 +32,13 @@ const MobileNavbar: React.FC = () => {
             </button>
 
             <div
-                className={'absolute top-0 right-0 z-[10] bg-blue-900 transition-[width] delay-150 pt-10 pb-5 rounded-bl'
-                    .concat(' flex justify-center items-center flex-col text-lg overflow-hidden gap-2')
+                className={'absolute top-0 right-0 h-screen z-[10] bg-blue-900 transition-[width] delay-150 pt-10 pb-5 rounded-bl'
+                    .concat(' flex items-center gap-2 flex-col text-lg overflow-hidden')
                     .concat(' ', isOpened ? 'w-full' : 'w-0')}
             >
-                <SearchInput />
+                <div className='mb-2'>
+                    <CitySearch />
+                </div>
 
                 {navLinkInfo.map(({ text, to }) => (
                     <CustomNavLink

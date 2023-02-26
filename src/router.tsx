@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import weatherStore from './store/weatherStore';
-import positionStore from './store/geolocationStore';
+import geolocationStore from './store/geolocationStore';
 import BasicWeatherInfo from './components/BasicWeatherInfo';
 
 const router = createBrowserRouter([
@@ -14,12 +14,14 @@ const router = createBrowserRouter([
                 path: '/current', //lan=:lan&lon=:lon",
                 element: <BasicWeatherInfo />,
                 loader: async (): Promise<OWCurrentWeatherResponse> => {
-                    await positionStore.requestPosition()
+                    if (!geolocationStore.latitude || !geolocationStore.longitude) {
+                        await geolocationStore.requestPosition()
+                    }
 
-                    const currentWeather = await weatherStore.requestCurrentWeather(positionStore.latitude, positionStore.longitude);
+                    const currentWeather = await weatherStore.requestCurrentWeather(geolocationStore.latitude, geolocationStore.longitude);
 
-                    positionStore.setCity(currentWeather.name);
-                    positionStore.setCountry(currentWeather.sys.country);
+                    geolocationStore.setCity(currentWeather.name);
+                    geolocationStore.setCountry(currentWeather.sys.country);
 
                     return currentWeather;
                 },

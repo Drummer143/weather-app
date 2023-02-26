@@ -14,7 +14,7 @@ const CitiesDropdown: React.FC<CitiesDropdownProps> = observer(({ visible = fals
     return (
         <div
             className={'absolute bottom-0 left-1/2 w-[calc(100%+2px)] px-1 border border-solid'
-                .concat(' max-h-[20vh] overflow-y-auto overflow-x-hidden border-black border-t-0')
+                .concat(' max-h-[20vh] max-md:max-h-[50vh] overflow-y-auto overflow-x-hidden border-black border-t-0')
                 .concat(' rounded-b translate-y-full -translate-x-1/2 bg-white text-black')
                 .concat(visible && weatherStore.suggestedCities.length > 0 ? '' : ' hidden')}
         >

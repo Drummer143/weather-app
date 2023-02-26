@@ -2,7 +2,7 @@ import React from 'react';
 
 import CustomNavLink from './CustomNavLink';
 import { navLinkInfo } from '../../utils/constants';
-import DesktopSearchInput from './DesktopSearchInput/DesktopSearchInput';
+import CitySearch from './CitySearch';
 
 const DesktopNavbar: React.FC = () => {
     return (
@@ -16,7 +16,7 @@ const DesktopNavbar: React.FC = () => {
                 </CustomNavLink>
             ))}
 
-            <DesktopSearchInput />
+            <CitySearch />
         </div>
     );
 }
